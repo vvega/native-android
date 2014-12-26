@@ -64,6 +64,17 @@ void sound_manager_set_volume(const char *url, float volume) {
     env->DeleteLocalRef(s);
 }
 
+void sound_manager_set_playback_rate(const char *url, float rate) {
+    native_shim *shim = get_native_shim();
+    JNIEnv *env = shim->env;
+    jobject manager = shim->instance;
+    jclass type = shim->type;
+    jmethodID method = env->GetMethodID(type, "setPlaybackRate", "(Ljava/lang/String;F)V");
+    jstring s = env->NewStringUTF(url);
+    env->CallVoidMethod(manager, method, s, volume);
+    env->DeleteLocalRef(s);
+}
+
 void sound_manager_play_background_music(const char *url, float volume, bool loop) {
     native_shim *shim = get_native_shim();
     JNIEnv *env = shim->env;
