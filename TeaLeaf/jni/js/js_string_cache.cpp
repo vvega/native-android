@@ -258,6 +258,7 @@ void js_string_cache_init() {
     STRING_CACHE_hide = Persistent<String>::New(String::New("hide"));
     STRING_CACHE_Socket = Persistent<String>::New(String::New("Socket"));
     STRING_CACHE_playBackgroundMusic = Persistent<String>::New(String::New("playBackgroundMusic"));
+    STRING_CACHE_setPlaybackRate = Persistent<String>::New(String::New("setPlaybackRate"));
     STRING_CACHE_fillRect = Persistent<String>::New(String::New("fillRect"));
     STRING_CACHE_gameHash = Persistent<String>::New(String::New("gameHash"));
     STRING_CACHE_tcpPort = Persistent<String>::New(String::New("tcpPort"));

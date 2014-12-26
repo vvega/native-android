@@ -24,6 +24,7 @@ public class SoundQueue implements Runnable {
 		LOAD,
 		PLAY_SOUND,
 		PLAY_MUSIC,
+		SET_PLAYBACK_RATE,
 		PAUSE,
 		STOP,
 		APP_PAUSED,
@@ -76,7 +77,10 @@ public class SoundQueue implements Runnable {
 	public void playBackgroundMusic(String url, float volume, boolean loop) {
 		addEvent(new Event(EventType.PLAY_MUSIC, url, volume, loop));
 	}
-	
+
+	public void setPlaybackRate(String url, float rate) {
+		addEvent(new Event(EventType.SET_PLAYBACK_RATE, url, rate));
+	}
 	
 	public void pauseSound(String url) {
 		addEvent(new Event(EventType.PAUSE, url));
@@ -135,6 +139,9 @@ public class SoundQueue implements Runnable {
 							break;
 						case STOP:
 							soundManager.stopSound(e.url);
+							break;
+						case SET_PLAYBACK_RATE:
+							soundManager.setPlaybackRate(e.url, rate);
 							break;
 						case SET_VOLUME:
 							soundManager.setVolume(e.url, e.volume);

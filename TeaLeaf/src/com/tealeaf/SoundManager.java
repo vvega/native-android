@@ -332,6 +332,11 @@ public class SoundManager implements Runnable {
 		}
 	}
 
+	public void setPlaybackRate(String url, float rate) {
+		logger.log("Setting playback rate of "+url+ " to "+rate);
+		playbackRate = rate;
+	}
+
 	public void setVolume(String url, float volume) {
 		if (url.equals(backgroundMusicUrl)) {
 			if (backgroundMusic != null) {
