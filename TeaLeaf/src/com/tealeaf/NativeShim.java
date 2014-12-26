@@ -428,9 +428,6 @@ public class NativeShim {
 	public void setVolume(String url, float volume) {
 		soundQueue.setVolume(url, volume);
 	}
-	public void setPlaybackRate(String url, float rate) {
-		soundQueue.setPlaybackRate(url, rate);
-	}
 	public void seekTo(String url, float position) {
 		soundQueue.seekTo(url, position);
 	}

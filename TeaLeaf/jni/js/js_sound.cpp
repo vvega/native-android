@@ -67,15 +67,6 @@ Handle<Value> defSetVolume(const Arguments& args) {
     return Undefined();
 }
 
-Handle<Value> defSetPlaybackRate(const Arguments& args) {
-    LOGFN("set playback rate");
-    String::Utf8Value str(args[0]);
-    float volume = args[1]->NumberValue();
-    const char *url = ToCString(str);
-    sound_manager_set_playback_rate(url, rate);
-    LOGFN("end set playback rate");
-    return Undefined();
-}
 
 Handle<Value> defPlayBackgroundMusic(const Arguments& args) {
     LOGFN("play bg music");
