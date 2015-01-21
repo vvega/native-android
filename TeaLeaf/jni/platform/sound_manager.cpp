@@ -71,7 +71,7 @@ void sound_manager_set_playback_rate(const char *url, float rate) {
     jclass type = shim->type;
     jmethodID method = env->GetMethodID(type, "setPlaybackRate", "(Ljava/lang/String;F)V");
     jstring s = env->NewStringUTF(url);
-    env->CallVoidMethod(manager, method, s, volume);
+    env->CallVoidMethod(manager, method, s, rate);
     env->DeleteLocalRef(s);
 }
 

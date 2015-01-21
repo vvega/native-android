@@ -52,6 +52,7 @@ public class SoundManager implements Runnable {
 		public String url;
 		public int id;
 		public float volume;
+		public float rate;
 		public boolean loop;
 		public int stream;
 		public boolean loaded;
@@ -63,6 +64,7 @@ public class SoundManager implements Runnable {
 			this.volume = volume;
 			this.loop = loop;
 			this.stream = 0;
+			this.rate = 1;
 			this.loaded = false;
 			this.failed = false;
 		}
@@ -333,8 +335,17 @@ public class SoundManager implements Runnable {
 	}
 
 	public void setPlaybackRate(String url, float rate) {
-		logger.log("Setting playback rate of "+url+ " to "+rate);
-		playbackRate = rate;
+		if (url.equals(backgroundMusicUrl)) {
+			if (backgroundMusic != null) {
+				logger.log("{sound} ERROR: Can't alter playback rate of background music.");
+			}
+		} else {
+			SoundSpec sound = getSound(url);
+			if (sound != null) {
+				sound.rate = rate;
+				soundPool.setRate(sound.stream, rate);
+			}
+		}
 	}
 
 	public void setVolume(String url, float volume) {

@@ -146,6 +146,7 @@ Persistent<String> STRING_CACHE_onAnimationFinish;
 Persistent<String> STRING_CACHE_type;
 Persistent<String> STRING_CACHE_milliseconds;
 Persistent<String> STRING_CACHE_setVolume;
+Persistent<String> STRING_CACHE_setPlaybackRate;
 Persistent<String> STRING_CACHE_nativeHash;
 Persistent<String> STRING_CACHE_measureTextBitmap;
 Persistent<String> STRING_CACHE_globalID;

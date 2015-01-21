@@ -15,6 +15,7 @@
 package com.tealeaf;
 
 import java.util.concurrent.LinkedBlockingQueue;
+import android.util.Log;
 
 public class SoundQueue implements Runnable {
 	private SoundManager soundManager;
@@ -40,6 +41,7 @@ public class SoundQueue implements Runnable {
 		EventType type;
 		String url;
 		float volume;
+		float rate;
 		boolean loop;
 		float position;
 		
@@ -50,7 +52,7 @@ public class SoundQueue implements Runnable {
 		public Event(EventType type, String url, float volume, boolean loop, float position) {
 			this.type = type;
 			this.url = url;
-			this.volume = volume;
+			this.rate = this.volume = volume;
 			this.loop = loop;
 			this.position = position;
 		}
@@ -141,7 +143,7 @@ public class SoundQueue implements Runnable {
 							soundManager.stopSound(e.url);
 							break;
 						case SET_PLAYBACK_RATE:
-							soundManager.setPlaybackRate(e.url, rate);
+							soundManager.setPlaybackRate(e.url, e.rate);
 							break;
 						case SET_VOLUME:
 							soundManager.setVolume(e.url, e.volume);
