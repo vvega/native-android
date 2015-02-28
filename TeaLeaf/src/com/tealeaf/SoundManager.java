@@ -164,7 +164,7 @@ public class SoundManager implements Runnable {
 			if (sound == null) {
 				logger.log("{sound} ERROR: Internal sound is null");
 			} else {
-				int stream = soundPool.play(sound.id, volume, volume, 1, loop ? -1 : 0, 1);
+				int stream = soundPool.play(sound.id, volume, volume, 1, loop ? -1 : 0, sound.rate);
 				sound.stream = stream;
 				if (pausedSounds.contains(sound)) {
 					pausedSounds.remove(sound);
